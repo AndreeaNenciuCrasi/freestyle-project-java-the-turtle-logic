@@ -50,9 +50,9 @@ public class Terminal {
         System.out.println("-------------------------------Command Menu-------------------------------");
         System.out.println("~COLORS~");
         System.out.println("- fgcolor: black, red, green, yellow, blue, magenta, cyan, white");
-        System.out.println("- bgcolor: black, red, green, yellow, blue, magenta, cyan, white");
+        System.out.println("- bgcolor: black, red, green, yellow, blue, cyan, white");
         System.out.println("~MOVE CURSOR:");
-        System.out.println("- up, down, left, right, move");
+        System.out.println("- up, down, left, right, move, char");
         System.out.println("~ATTRIBUTES~");
         System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden");
         System.out.println("Type commands to see this menu");
