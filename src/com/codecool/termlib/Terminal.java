@@ -57,6 +57,7 @@ public class Terminal {
     }
 
     private static void setCommandMenu() {
+        System.out.println();
         System.out.println("-------------------------------Command Menu-------------------------------");
         System.out.println("~COLORS~");
         System.out.println("- fgcolor: black, red, green, yellow, blue, magenta, cyan, white");
@@ -67,6 +68,7 @@ public class Terminal {
         System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden, time");
         System.out.println("Type commands to see this menu");
         System.out.println("-----------------------------------------------------------------------");
+        System.out.println();
     }
 
     /**
