@@ -58,7 +58,7 @@ public class Terminal {
 
     private static void setCommandMenu() {
         System.out.println();
-        System.out.println("-------------------------------Command Menu-------------------------------");
+        System.out.println("-------------------------------Command Menu----------------------------");
         System.out.println("~COLORS~");
         System.out.println("- fgcolor: black, red, green, yellow, blue, magenta, cyan, white");
         System.out.println("- bgcolor: black, red, green, yellow, blue, cyan, white");
