@@ -1,7 +1,10 @@
 package com.codecool.termlib;
 
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Terminal {
     /**
@@ -32,17 +35,24 @@ public class Terminal {
      * Main method to start terminal application
      */
     public static void main(String[] args) {
+        LocalTime timeObject;
+        DateTimeFormatter timeObjectFormat;
+        String time;
+
         Scanner in = new Scanner(System.in);
         Boolean runApplication = true;
-        Terminal terminal = new Terminal();
 
+        Terminal terminal = new Terminal();
         setCommandMenu();
 
         while (runApplication) {
+            timeObject = LocalTime.now();
+            timeObjectFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+            time = timeObjectFormat.format(timeObject);
             System.out.print("Enter value: ");
             String command = in.nextLine();
             System.out.println("You entered: " + command);
-            terminal.command(command);
+            terminal.command(command, time);
         }
     }
 
@@ -54,7 +64,7 @@ public class Terminal {
         System.out.println("~MOVE CURSOR~ (with numeric attributes)");
         System.out.println("- up, down, left, right, move, char");
         System.out.println("~ATTRIBUTES~");
-        System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden");
+        System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden, time");
         System.out.println("Type commands to see this menu");
         System.out.println("-----------------------------------------------------------------------");
     }
@@ -236,7 +246,7 @@ public class Terminal {
      *
      * @param commandString The unique part of a command sequence.
      */
-    private void command(String commandString) {
+    private void command(String commandString, String time) {
         // background colors
         if (commandString.toLowerCase().contains("bgcolor")) {
             if (commandString.toLowerCase().contains("red")) {
@@ -319,6 +329,10 @@ public class Terminal {
 
         if (commandString.toLowerCase().contains("blink")) {
             System.out.print(Attribute.BLINK);
+        }
+
+        if (commandString.toLowerCase().equals("time")){
+            System.out.println(time);
         }
 
         // direction
