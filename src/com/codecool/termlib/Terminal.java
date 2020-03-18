@@ -51,7 +51,7 @@ public class Terminal {
         System.out.println("~COLORS~");
         System.out.println("- fgcolor: black, red, green, yellow, blue, magenta, cyan, white");
         System.out.println("- bgcolor: black, red, green, yellow, blue, cyan, white");
-        System.out.println("~MOVE CURSOR:");
+        System.out.println("~MOVE CURSOR~ (with numeric attributes)");
         System.out.println("- up, down, left, right, move, char");
         System.out.println("~ATTRIBUTES~");
         System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden");
@@ -223,7 +223,6 @@ public class Terminal {
         System.out.print(Direction.SAVE_CURSOR);
         setCursorPosition();
         System.out.print(c);
-
         System.out.println(Direction.RESTORE_CURSOR);
         System.out.println();
 
@@ -239,7 +238,7 @@ public class Terminal {
      */
     private void command(String commandString) {
         // background colors
-        if (commandString.contains("bgcolor")) {
+        if (commandString.toLowerCase().contains("bgcolor")) {
             if (commandString.toLowerCase().contains("red")) {
                 setBgColor(Color.BG_RED);
             } else if (commandString.toLowerCase().contains("green")) {
@@ -260,7 +259,7 @@ public class Terminal {
         }
 
         // foreground colors
-        if (commandString.contains("fgcolor")) {
+        if (commandString.toLowerCase().contains("fgcolor")) {
             if (commandString.toLowerCase().contains("red")) {
                 setColor(Color.RED);
             } else if (commandString.toLowerCase().contains("green")) {
@@ -283,42 +282,42 @@ public class Terminal {
         // attributes
 
         // underline text
-        if (commandString.contains("underline")) {
+        if (commandString.toLowerCase().contains("underline")) {
             setUnderline();
         }
 
         // reset style
-        if (commandString.contains("reset")) {
+        if (commandString.toLowerCase().contains("reset")) {
             resetStyle();
         }
 
         // text is bright
-        if (commandString.equals("bright")) {
+        if (commandString.toLowerCase().equals("bright")) {
             System.out.print(Attribute.BRIGHT);
         }
 
         // text is dim
-        if (commandString.contains("dim")) {
+        if (commandString.toLowerCase().contains("dim")) {
             System.out.print(Attribute.DIM);
         }
 
         // clear terminal
-        if (commandString.contains("clear")) {
+        if (commandString.toLowerCase().contains("clear")) {
             clearScreen();
         }
 
 
-        if (commandString.contains("reverse")) {
+        if (commandString.toLowerCase().contains("reverse")) {
             System.out.print(Attribute.REVERSE);
         }
 
         // hide text
-        if (commandString.contains("hidden")) {
+        if (commandString.toLowerCase().contains("hidden")) {
             System.out.print(Attribute.HIDDEN);
         }
 
 
-        if (commandString.contains("blink")) {
+        if (commandString.toLowerCase().contains("blink")) {
             System.out.print(Attribute.BLINK);
         }
 
@@ -326,39 +325,40 @@ public class Terminal {
         Scanner in = new Scanner(System.in);
         Integer amount;
         try {
-            if (commandString.equals("up")) {
-                System.out.print("Enter the amount you want to move your cursor:");
+            if (commandString.toLowerCase().equals("up")) {
+                System.out.print("Enter the distance you want to move your cursor:");
                 amount = in.nextInt();
                 setCursorPosition(Direction.UP, amount);
-            } else if (commandString.equals("down")) {
-                System.out.print("Enter the amount you want to move your cursor:");
+            } else if (commandString.toLowerCase().equals("down")) {
+                System.out.print("Enter the distance you want to move your cursor:");
 
                 amount = in.nextInt();
                 setCursorPosition(Direction.DOWN, amount);
-            } else if (commandString.equals("left")) {
-                System.out.print("Enter the amount you want to move your cursor:");
+            } else if (commandString.toLowerCase().equals("left")) {
+                System.out.print("Enter the distance you want to move your cursor:");
                 amount = in.nextInt();
                 setCursorPosition(Direction.BACKWARD, amount);
-            } else if (commandString.equals("right")) {
-                System.out.print("Enter the amount you want to move your cursor:");
+            } else if (commandString.toLowerCase().equals("right")) {
+                System.out.print("Enter the distance you want to move your cursor:");
                 amount = in.nextInt();
                 setCursorPosition(Direction.FORWARD, amount);
             }
 
-            if (commandString.contains("move")) {
+            if (commandString.toLowerCase().equals("move")) {
                 setCursorPosition();
             }
-        } catch (InputMismatchException e) {
-            e.printStackTrace();
-        }
 
-        // change a character from a position with ▒
-        if (commandString.contains("char")) {
-            setChar(setGlyph());
+            // change a character from a position with ▒
+            if (commandString.toLowerCase().equals("char")) {
+                setChar(setGlyph());
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid value, please use commands to show available options.");
         }
 
         // show available commands
-        if (commandString.equals("commands")) {
+        if (commandString.toLowerCase().equals("commands")) {
             setCommandMenu();
         }
     }
@@ -368,7 +368,7 @@ public class Terminal {
         return glyph;
     }
 
-    public void setCursorPosition(){
+    public void setCursorPosition() {
         Scanner in = new Scanner(System.in);
         System.out.print("Choose x position: ");
         Integer x = in.nextInt();
