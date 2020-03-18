@@ -223,8 +223,9 @@ public class Terminal {
         System.out.print(Direction.SAVE_CURSOR);
         setCursorPosition();
         System.out.print(c);
+
+        System.out.println(Direction.RESTORE_CURSOR);
         System.out.println();
-        System.out.print(Direction.RESTORE_CURSOR);
 
     }
 
@@ -363,8 +364,8 @@ public class Terminal {
     }
 
     public char setGlyph() {
-        int glyph = 172;
-        return (char) glyph;
+        char glyph = '\u00A3';
+        return glyph;
     }
 
     public void setCursorPosition(){
