@@ -65,7 +65,7 @@ public class Terminal {
         System.out.println("~MOVE CURSOR~ (with numeric attributes)");
         System.out.println("- up, down, left, right, move, char");
         System.out.println("~ATTRIBUTES~");
-        System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden, time");
+        System.out.println("- reset, clear, bright, dim, underline, blink, reverse, hidden, time, exit");
         System.out.println("Type commands to see this menu");
         System.out.println("-----------------------------------------------------------------------");
         System.out.println();
@@ -376,6 +376,12 @@ public class Terminal {
         // show available commands
         if (commandString.toLowerCase().equals("commands")) {
             setCommandMenu();
+        }
+
+        // exit program
+        if (commandString.toLowerCase().equals("exit")){
+            System.out.println("Thank you for using Terminal.");
+            System.exit(1);
         }
     }
 
