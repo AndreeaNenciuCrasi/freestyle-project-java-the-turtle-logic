@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.codecool.termlib","l":"Attribute"},{"p":"com.codecool.termlib","l":"Color"},{"p":"com.codecool.termlib","l":"Direction"},{"p":"com.codecool.termlib","l":"Terminal"}]
