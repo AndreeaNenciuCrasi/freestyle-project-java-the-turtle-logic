@@ -32,7 +32,9 @@ public class Terminal {
     private static final String STYLE = "m";
 
     /**
-     * Main method to start terminal application
+     * Main method that runs the program
+     * <p>
+     * @param args
      */
     public static void main(String[] args) {
         LocalTime timeObject;
@@ -56,6 +58,11 @@ public class Terminal {
         }
     }
 
+    /**
+     * Display menu
+     * <p>
+     * Display command menu to user
+     */
     private static void setCommandMenu() {
         System.out.println();
         System.out.println("-------------------------------Command Menu----------------------------");
@@ -333,7 +340,7 @@ public class Terminal {
             System.out.print(Attribute.BLINK);
         }
 
-        if (commandString.toLowerCase().equals("time")){
+        if (commandString.toLowerCase().equals("time")) {
             System.out.println(time);
         }
 
@@ -379,17 +386,29 @@ public class Terminal {
         }
 
         // exit program
-        if (commandString.toLowerCase().equals("exit")){
+        if (commandString.toLowerCase().equals("exit")) {
             System.out.println("Thank you for using Terminal.");
             System.exit(1);
         }
     }
 
+    /**
+     * Set special character
+     * <p>
+     * Setting a special character to be printed
+     * @return special char
+     */
     public char setGlyph() {
         char glyph = '\u00A3';
         return glyph;
     }
 
+    /**
+     * Set cursor position
+     * <p>
+     * User is asked to enter two x and y position
+     * The cursor is set to that position using moveTo function
+     */
     public void setCursorPosition() {
         Scanner in = new Scanner(System.in);
         System.out.print("Choose x position: ");
